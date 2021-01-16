@@ -29,5 +29,17 @@ function buildPlot() {}
         type:"bar",
         orientation: "h"
       };
-    
+      var data = [trace];
+      //create layout
+      var layout = {
+        title:"Top 10 OTUs",
+        margin: {
+          l: 100,
+          r: 100,
+          t: 100,
+          b: 100
+        }
+      };
+      //create new plot
+      Plotly.newPlot("bar", data, layout);
     });
