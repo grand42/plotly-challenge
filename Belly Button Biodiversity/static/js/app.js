@@ -42,4 +42,21 @@ function buildPlot() {}
       };
       //create new plot
       Plotly.newPlot("bar", data, layout);
+      //create bubble chart
+      var trace2 = {
+        x:sample_id,
+        y:sample_value,
+        mode:'markers',
+        marker: {size:sample_value, color:sample_id},
+        text:filtered_samples.otu_labels
+
+      };
+      data2 = [trace2];
+      layout2 = {
+        xaxis:{title:"OTU ID"},
+        height:500,
+        width:1000
+      };
+
+      Plotly.newPlot("bubble", data2, layout2);
     });
