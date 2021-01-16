@@ -18,4 +18,16 @@ function buildPlot() {}
       var IDs = sample_id.slice(0,10);
       console.log(Values);
       console.log(IDs);
+      //get labels
+      var Labels = filtered_samples.otu_labels.slice(0,10);
+      console.log(Labels);
+      //create trace
+      var trace = {
+        x:Values,
+        y:IDs,
+        text: Labels,
+        type:"bar",
+        orientation: "h"
+      };
+    
     });
