@@ -1,5 +1,8 @@
 
 // Fetch json data and console log
-d3.json("samples.json").then((importedData) => {
-    console.log(importedData);
-  });
+function buildPlot() {}
+  d3.json("samples.json").then(function(importedData) {
+      console.log(importedData);
+      var samples = importedData.samples;
+      console.log(samples);
+    });
