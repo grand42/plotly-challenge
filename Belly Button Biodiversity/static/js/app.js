@@ -3,24 +3,24 @@ function buildPlot() {}
 // Fetch json data and console log
 
   d3.json("samples.json").then(function(importedData) {
-      console.log(importedData);
+      //console.log(importedData);
       var samples = importedData.samples;
-      //console.log(samples);
+      // console.log(samples);
       // filter by id
-      var filtered_samples = importedData.samples.filter(sample => sample.id === "946")[0];
+      var filtered_samples = samples.filter(sample => sample.id === "946")[0];
       //console.log(filtered_samples);
       var sample_id = filtered_samples.otu_ids;
       //console.log(sample_id);
       var sample_value = filtered_samples.sample_values;
       //console.log(sample_value);
       //get top t0 values
-      var Values = sample_value.slice(0,10);
-      var IDs = sample_id.slice(0,10).map(otu => "OTU " + otu);
-      console.log(Values);
-      console.log(IDs);
+      var Values = sample_value.slice(0,10).reverse();
+      var IDs = sample_id.slice(0,10).reverse().map(otu => "OTU " + otu);
+      //console.log(Values);
+      //console.log(IDs);
       //get labels
-      var Labels = filtered_samples.otu_labels.slice(0,10);
-      console.log(Labels);
+      var Labels = filtered_samples.otu_labels.slice(0,10).reverse();
+      //console.log(Labels);
       //create trace
       var trace = {
         x:Values,
@@ -59,4 +59,13 @@ function buildPlot() {}
       };
 
       Plotly.newPlot("bubble", data2, layout2);
+     
     });
+  
+  // Get MetaData
+  d3.json("samples.json").then(function(importedData) {
+        var MetaData = importedData.metadata;
+        console.log(MetaData);
+        var Individual = MetaData.filter(metadata => metadata.id === 946)[0];
+        console.log(Individual);
+  });
