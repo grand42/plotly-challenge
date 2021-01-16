@@ -15,7 +15,7 @@ function buildPlot() {}
       //console.log(sample_value);
       //get top t0 values
       var Values = sample_value.slice(0,10);
-      var IDs = sample_id.slice(0,10);
+      var IDs = sample_id.slice(0,10).map(otu => "OTU " + otu);
       console.log(Values);
       console.log(IDs);
       //get labels
