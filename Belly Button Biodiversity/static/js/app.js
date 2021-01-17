@@ -65,7 +65,20 @@ function buildPlot() {}
   // Get MetaData
   d3.json("samples.json").then(function(importedData) {
         var MetaData = importedData.metadata;
-        console.log(MetaData);
+        //console.log(MetaData);
         var Individual = MetaData.filter(metadata => metadata.id === 946)[0];
         console.log(Individual);
+        // Select meta-data from index
+        var Info = d3.select("#meta-data");
+        //clear form
+        Info.html("")
+        //Create variables for demographics
+        var ID = Individual.id;
+        var Age = Individual.age;
+        var Location = Individual.location;
+        var Ethnicity = Individual.ethnicity;
+        var Sex = Individual.gender;
+        var BB_Type = Individual.bbtype;
+        var wash = Individual.wfreq;
+
   });
