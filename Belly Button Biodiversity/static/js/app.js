@@ -93,6 +93,8 @@ function GetMeta(id) {
         Info.append("h5").text("Ethnicity: " + Ethnicity);
         Info.append("h5").text("Location: " + Location);
         Info.append("h5").text("Belly Button Type: " + BB_Type);
+      // calculate wash position
+      
       //create trace for Gauge Plot
       var label = ["-", "0-1", '1-2', '2-3', '3-4', '4-5', '5-6','6-7','7-8','8-9', '9-10'];
         trace3 = {
@@ -138,11 +140,15 @@ function GetMeta(id) {
           },
           shapes: [
               {
-                  type: 'path',
-                  path: 'M 0.235 0.5 L 0.24 0.65 L 0.245 0.5 Z',
-                  fillcolor: 'rgba(255, 0, 0, 0.5)',
+                  type: 'line',
+                  x0:0.2424, 
+                  y0:0.5,
+                  x1:0.2424,
+                  y1:0.75,
+                  showarrow:true,
                   line: {
-                      width: 0.5
+                      width: 2,
+                      color:"red"
                   },
                   xref: 'paper',
                   yref: 'paper'
