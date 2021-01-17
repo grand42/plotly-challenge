@@ -67,7 +67,7 @@ function buildPlot() {}
         var MetaData = importedData.metadata;
         //console.log(MetaData);
         var Individual = MetaData.filter(metadata => metadata.id === 946)[0];
-        console.log(Individual);
+        //console.log(Individual);
         // Select meta-data from index
         var Info = d3.select("#sample-metadata");
         //clear form
@@ -87,3 +87,15 @@ function buildPlot() {}
         Info.append("h5").text("Location: " + Location);
         Info.append("h5").text("Belly Button Type: " + BB_Type);
   });
+
+  // Create function for dropdown menu
+function dropdown () {
+  var menu=d3.select("#selDataset");
+  d3.json("samples.json").then(function(importedData) {
+    console.log(importedData);
+    importedData.names.forEach(function(name){
+      menu.append("option").text(name);
+    });
+});
+}
+dropdown();
