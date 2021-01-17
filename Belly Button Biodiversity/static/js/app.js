@@ -93,10 +93,15 @@ function GetMeta(id) {
         Info.append("h5").text("Ethnicity: " + Ethnicity);
         Info.append("h5").text("Location: " + Location);
         Info.append("h5").text("Belly Button Type: " + BB_Type);
+        Info.append("h5").text("Wash Frequency: " + wash);
       // calculate wash position
-      
+      var degrees = 180-(18*(wash)-9);
+      var radians = degrees * (Math.PI)/180;
+      var xpos = 0.5+ 0.25*Math.cos(radians);
+      var ypos = 0.5+0.25*Math.sin(radians);
+      console.log(xpos);
       //create trace for Gauge Plot
-      var label = ["-", "0-1", '1-2', '2-3', '3-4', '4-5', '5-6','6-7','7-8','8-9', '9-10'];
+      var label = ["-", "1", '2', '3', '4', '5', '6','7','8','9', '10'];
         trace3 = {
           values:[50, 5, 5,5, 5,5, 5, 5, 5, 5, 5],
           labels:label,
@@ -114,7 +119,7 @@ function GetMeta(id) {
             'rgb(67, 0, 0)'
           ]},
           name:"Gauge",
-          domain:{x:[0,0.48]},
+          domain:{x:[0,1]},
           type:'pie',
           hole:.3,
           direction:"clockwise",
@@ -141,11 +146,10 @@ function GetMeta(id) {
           shapes: [
               {
                   type: 'line',
-                  x0:0.2424, 
+                  x0:0.5, 
                   y0:0.5,
-                  x1:0.2424,
-                  y1:0.75,
-                  showarrow:true,
+                  x1:xpos,
+                  y1:ypos,
                   line: {
                       width: 2,
                       color:"red"
