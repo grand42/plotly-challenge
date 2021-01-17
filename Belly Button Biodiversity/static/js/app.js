@@ -27,7 +27,13 @@ function buildPlot(id) {
         y:IDs,
         text: Labels,
         type:"bar",
-        orientation: "h"
+        orientation: "h",
+        marker: {
+          color: 'rgb(255,0,0)',
+          line: {
+            color: 'rgb(20,20,20)',
+            width: 1.5
+          }}
       };
       var data = [trace];
       //create layout
@@ -48,13 +54,14 @@ function buildPlot(id) {
         y:sample_value,
         mode:'markers',
         marker: {size:sample_value, color:sample_id},
-        text:filtered_samples.otu_labels
+        text:filtered_samples.otu_labels,
+        continuous_colorscale:'Viridis'
 
       };
       data2 = [trace2];
       layout2 = {
         xaxis:{title:"OTU ID"},
-        height:500,
+        height:700,
         width:1000
       };
 
@@ -104,3 +111,8 @@ function dropdown () {
 }
 dropdown();
 
+// Create Change event
+function optionChanged(id) {
+  buildPlot(id);
+  GetMeta(id);
+};
