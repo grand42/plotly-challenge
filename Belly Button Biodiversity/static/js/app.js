@@ -1,5 +1,5 @@
 // Create a plot for each Individual
-function buildPlot() {}
+function buildPlot(id) {
 // Fetch json data and console log
 
   d3.json("samples.json").then(function(importedData) {
@@ -7,7 +7,7 @@ function buildPlot() {}
       var samples = importedData.samples;
       // console.log(samples);
       // filter by id
-      var filtered_samples = samples.filter(sample => sample.id === "946")[0];
+      var filtered_samples = samples.filter(sample => sample.id === id)[0];
       //console.log(filtered_samples);
       var sample_id = filtered_samples.otu_ids;
       //console.log(sample_id);
@@ -61,12 +61,13 @@ function buildPlot() {}
       Plotly.newPlot("bubble", data2, layout2);
      
     });
-  
+};
   // Get MetaData
+function GetMeta(id) {
   d3.json("samples.json").then(function(importedData) {
         var MetaData = importedData.metadata;
         //console.log(MetaData);
-        var Individual = MetaData.filter(metadata => metadata.id === 946)[0];
+        var Individual = MetaData.filter(metadata => metadata.id.toString() === id)[0];
         //console.log(Individual);
         // Select meta-data from index
         var Info = d3.select("#sample-metadata");
@@ -87,15 +88,19 @@ function buildPlot() {}
         Info.append("h5").text("Location: " + Location);
         Info.append("h5").text("Belly Button Type: " + BB_Type);
   });
-
+};
   // Create function for dropdown menu
 function dropdown () {
   var menu=d3.select("#selDataset");
   d3.json("samples.json").then(function(importedData) {
     console.log(importedData);
-    importedData.names.forEach(function(name){
+    var Names = importedData.names;
+    Names.forEach(function(name){
       menu.append("option").text(name);
     });
+    buildPlot(Names[0]);
+    GetMeta(Names[0]);
 });
 }
 dropdown();
+
