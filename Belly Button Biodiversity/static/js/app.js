@@ -69,7 +69,7 @@ function buildPlot() {}
         var Individual = MetaData.filter(metadata => metadata.id === 946)[0];
         console.log(Individual);
         // Select meta-data from index
-        var Info = d3.select("#meta-data");
+        var Info = d3.select("#sample-metadata");
         //clear form
         Info.html("")
         //Create variables for demographics
@@ -80,5 +80,10 @@ function buildPlot() {}
         var Sex = Individual.gender;
         var BB_Type = Individual.bbtype;
         var wash = Individual.wfreq;
-
+        Info.append("h5").text("ID: " + ID);
+        Info.append("h5").text("Age: " + Age);
+        Info.append("h5").text("Sex: " + Sex);
+        Info.append("h5").text("Ethnicity: " + Ethnicity);
+        Info.append("h5").text("Location: " + Location);
+        Info.append("h5").text("Belly Button Type: " + BB_Type);
   });
