@@ -6,7 +6,7 @@
 
 The goal of this project was to create an interactive dashboard to explore a Belly Button Biodiversity data set, which catalogs the microbial colonies in human navels.
 
-[Belly Button Biodiversity Interactive Dashboard](https://github.com/grand42/plotly-challenge/blob/main/Belly%20Button%20Biodiversity/index.html)
+[Belly Button Biodiversity Interactive Dashboard](https://grand42.github.io/plotly-challenge/Belly%20Button%20Biodiversity/index.html)
 
 ### Step 1: Plotly
 
