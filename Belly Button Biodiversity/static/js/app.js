@@ -66,7 +66,6 @@ function buildPlot(id) {
       };
 
       Plotly.newPlot("bubble", data2, layout2);
-     
     });
 };
   // Get MetaData
@@ -94,6 +93,73 @@ function GetMeta(id) {
         Info.append("h5").text("Ethnicity: " + Ethnicity);
         Info.append("h5").text("Location: " + Location);
         Info.append("h5").text("Belly Button Type: " + BB_Type);
+      //create trace for Gauge Plot
+      var label = ["-", "0-1", '1-2', '2-3', '3-4', '4-5', '5-6','6-7','7-8','8-9', '9-10'];
+        trace3 = {
+          values:[50, 5, 5,5, 5,5, 5, 5, 5, 5, 5],
+          labels:label,
+          marker:{colors:[
+            'rgb(255, 255, 255)',
+            'rgb(254, 254, 204)',
+            'rgb(255, 255, 163)',
+            'rgb(255, 255, 0)',
+            'rgb(246, 210, 0)',
+            'rgb(229, 167, 0)',
+            'rgb(205, 127, 0)',
+            'rgb(175, 90, 13)',
+            'rgb(141, 57, 17)',
+            'rgb(104, 27, 15)',
+            'rgb(67, 0, 0)'
+          ]},
+          name:"Gauge",
+          domain:{x:[0,0.48]},
+          type:'pie',
+          hole:.3,
+          direction:"clockwise",
+          rotation:90,
+          textposition:"inside",
+          hoverinfo:"none",
+          textinfo:"label"
+
+        };
+        data3 = [trace3];
+        layout3 = {
+         title:"Wash Frequency: Washes per Week",
+          showlegend:false,
+          xaxis: {
+              showticklabels:false,
+              showgrid:false,
+              zeroline:false,
+          },
+          yaxis: {
+              showticklabels: false,
+              showgrid: false,
+              zeroline: false,
+          },
+          shapes: [
+              {
+                  type: 'path',
+                  path: 'M 0.235 0.5 L 0.24 0.65 L 0.245 0.5 Z',
+                  fillcolor: 'rgba(255, 0, 0, 0.5)',
+                  line: {
+                      width: 0.5
+                  },
+                  xref: 'paper',
+                  yref: 'paper'
+              }],
+          
+          annotations: 
+              {
+                  xref: 'paper',
+                  yref: 'paper',
+                  x: 0.23,
+                  y: 0.45,
+                  text: '50',
+                  showarrow: false
+              }
+          
+      };
+      Plotly.newPlot("gauge", data3, layout3);
   });
 };
   // Create function for dropdown menu
